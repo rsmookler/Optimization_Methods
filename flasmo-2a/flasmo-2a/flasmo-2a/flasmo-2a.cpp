@@ -8,7 +8,7 @@
 
 int _tmain(int argc, _TCHAR* argv[])
 {
-	deck d();
+	deck d;
 	cout << d;
 
 	return 0;
