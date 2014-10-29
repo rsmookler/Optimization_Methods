@@ -7,6 +7,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <algorithm>
 #include <vector>
 #include <string>
 
@@ -18,7 +19,7 @@ public:
 	dictionary(const string& fileName);		      //Constructor
 	vector<string> getWords();				      //Return words vector
 	void checkDictionarySequential(string candidateString); //Check dictionary for string, sequential search
-	void checkDictionaryBinary(string target, int first, int last); //Check dictionary for string, binary search
+	bool checkDictionaryBinary(string target, int first, int last); //Check dictionary for string, binary search
 	void dQuickSort(int left, int right);												//Quick sort for dictionary
 	void dSelectionSort();											//Selection sort for dictionary
 	void printDictionary();
@@ -42,6 +43,7 @@ dictionary::dictionary(const string& fileName)
 	while(!fin.eof())
 	{
 		fin >> read_word;
+		transform(read_word.begin(), read_word.end(), read_word.begin(), ::tolower);
 		words.push_back(read_word);
 	}//end while
 }//end dictionary constructor
@@ -70,7 +72,7 @@ void dictionary::checkDictionarySequential(string candidateString)
 }//end checkDictionary
 
 
-void dictionary::checkDictionaryBinary(string target, int first, int last)
+bool dictionary::checkDictionaryBinary(string target, int first, int last)
 {
 	int mid;
     while (last >= first)
@@ -79,7 +81,7 @@ void dictionary::checkDictionaryBinary(string target, int first, int last)
 
       if(words[mid] == target)
 	  {
-          cout << words[mid] << "\n"; 
+          return true; 
 	  }
       else if (words[mid] < target)
 	  {
@@ -90,6 +92,7 @@ void dictionary::checkDictionaryBinary(string target, int first, int last)
 		  last = mid - 1;
 	  }//end if
     }//end while
+	return false;
 }
 
 void dictionary::dQuickSort(int left, int right)

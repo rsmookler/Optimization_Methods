@@ -21,6 +21,9 @@ void findMatches(dictionary dict, grid gr)
 {
 	//Store the grid
 	matrix<char> g = gr.getMatrix();
+
+	//String for word found in dictionary
+	string result;
 	
 	//Starting character for candidate strings
 	char startingLetter;
@@ -68,7 +71,8 @@ void findMatches(dictionary dict, grid gr)
 				//If the candidate string is at least 5 characters, check the dictionary.
 				if(candidateString.length() >= 5) 
 				{
-					dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1);
+				  if(dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1)) cout << candidateString << "\n";
+					
 				}//end if
 				nextRow = nextRow - 1; //Go to the next character
 
@@ -99,7 +103,7 @@ void findMatches(dictionary dict, grid gr)
 				//If the candidate string is at least 5 characters, check the dictionary.
 				if(candidateString.length() >= 5)
 				{
-				dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1);
+				  if(dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1)) cout << candidateString << "\n";
 				}//end if
 				nextRow = nextRow + 1;       //Go to the next character
 
@@ -130,7 +134,7 @@ void findMatches(dictionary dict, grid gr)
 				//If the candidate string is at least 5 characters, check the dictionary.
 				if(candidateString.length() >= 5) 
 				{
-					dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1);
+					 if(dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1)) cout << candidateString << "\n";
 				}//end if
 				nextCol = nextCol - 1;   //Go to the next character
 
@@ -159,9 +163,9 @@ void findMatches(dictionary dict, grid gr)
 				candidateString += g[startingRow][nextCol];
 
 				//If the candidate string is at least 5 characters, check the dictionary.
-				if(candidateString.length() >= 5)\
+				if(candidateString.length() >= 5)
 				{
-				dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1);
+					 if(dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1)) cout << candidateString << "\n";
 				}//end if
 				nextCol = nextCol + 1;       //Go to the next character
 
@@ -198,7 +202,7 @@ void findMatches(dictionary dict, grid gr)
 				//If the candidate string is at least 5 characters, check the dictionary.
 				if(candidateString.length() >= 5) 
 				{
-				dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1);
+					 if(dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1)) cout << candidateString << "\n";
 				}//end if
 
 				//Go to the next character
@@ -244,7 +248,7 @@ void findMatches(dictionary dict, grid gr)
 				//If the candidate string is at least 5 characters, check the dictionary.
 				if(candidateString.length() >= 5)
 				{
-					dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1);
+					  if(dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1)) cout << candidateString << "\n";
 				}//end if
 				
 				//Go to the next character
@@ -290,7 +294,7 @@ void findMatches(dictionary dict, grid gr)
 				//If the candidate string is at least 5 characters, check the dictionary.
 				if(candidateString.length() >= 5)
 				{
-						dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1);
+					 if(dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1)) cout << candidateString << "\n";
 				}//end if
 
 				//Go to the next character
@@ -336,7 +340,7 @@ void findMatches(dictionary dict, grid gr)
 				//If the candidate string is at least 5 characters, check the dictionary.
 				if(candidateString.length() >= 5) 
 				{
-						dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1);
+					 if(dict.checkDictionaryBinary(candidateString, 0, dict.getWords().size()-1)) cout << candidateString << "\n";
 				}//end if
 
 				//Go to the next character
@@ -376,6 +380,7 @@ void testSearch()
 	dictionary d("dictionary.txt");
 	d.dQuickSort(0, d.getWords().size()-1);
 	//Call findMatches to print all words from the dictionary in the grid
+//	d.printDictionary();
 	findMatches(d, g);
 }//end testSearch
 
